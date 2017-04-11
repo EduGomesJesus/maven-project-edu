@@ -3,10 +3,11 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mulesoft.training</groupId>
-	<artifactId>maven-project</artifactId>
+	<!-- <artifactId>maven-project</artifactId> -->
+	<artifactId>maven-project-adv11-apr-edu</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule</packaging>
-<!-- 	<packaging>jar</packaging> -->
+	<!-- <packaging>jar</packaging> -->
 	<name>Mule maven-project Application</name>
 
 	<properties>
@@ -53,6 +54,32 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- Maven Plugin to Deploy -->
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<deploymentType>cloudhub</deploymentType>
+					<muleVersion>${mule.version}</muleVersion>
+					<username>ejesus-treinamento</username>
+					<password>Treinamento1</password>
+					<workerType>Micro</workerType>
+					<redeploy>true</redeploy>
+					<environment>Production</environment>
+				</configuration>
+				<executions>
+					<execution>
+						<id>deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
@@ -165,7 +192,7 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-all</artifactId>
 			<version>5.14.4</version>
-<!-- 			<scope>provided</scope> -->
+			<!-- <scope>provided</scope> -->
 		</dependency>
 
 		<dependency>
@@ -174,13 +201,13 @@
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
-	<dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-json</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-json</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 
 	<repositories>
 		<repository>
